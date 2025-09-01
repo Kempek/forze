@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Box, 
-  Card, 
-  CardContent, 
-  Typography, 
-  Grid, 
-  Chip, 
-  CircularProgress, 
-  Alert, 
-  Paper,
-  Button,
-  Container
+import { EmojiEvents, TableChart, Timeline } from '@mui/icons-material';
+import {
+    Alert,
+    Box,
+    Button,
+    Card,
+    CardContent,
+    Chip,
+    CircularProgress,
+    Container,
+    Grid,
+    Paper,
+    Typography
 } from '@mui/material';
-import { TrendingUp, TrendingDown, EmojiEvents, Timeline, TableChart } from '@mui/icons-material';
-import MaterialChart from './MaterialChart';
+import React, { useEffect, useState } from 'react';
 import MatchTable from './MatchTable';
+import MaterialChart from './MaterialChart';
 
 const FaceitStats = () => {
   const [stats, setStats] = useState(null);
@@ -30,8 +30,8 @@ const FaceitStats = () => {
         
         // Загружаем статистику и матчи отдельно
         const [statsResp, matchesResp] = await Promise.all([
-          fetch('http://localhost:3001/api/faceit/stats'),
-          fetch('http://localhost:3001/api/faceit/matches')
+          fetch('http://212.193.26.100:3001/api/faceit/stats'),
+          fetch('http://212.193.26.100:3001/api/faceit/matches')
         ]);
         
         if (!statsResp.ok) {

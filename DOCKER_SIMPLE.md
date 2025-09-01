@@ -15,8 +15,8 @@ docker-compose down
 
 ## Доступ
 
-- **Приложение**: http://localhost:3001
-- **API**: http://localhost:3001/api/health
+- **Приложение**: http://212.193.26.100:3001
+- **API**: http://212.193.26.100:3001/api/health
 
 ## Управление
 

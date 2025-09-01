@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
 import {
-  Box,
-  Chip,
-  Typography,
-  Tooltip,
-  IconButton,
-  Collapse,
-} from "@mui/material";
-import {
-  Wifi,
-  WifiOff,
-  Refresh,
-  ExpandMore,
-  ExpandLess,
-  CheckCircle,
-  Warning,
-  Error,
+    CheckCircle,
+    Error,
+    ExpandLess,
+    ExpandMore,
+    Refresh,
+    Warning,
+    Wifi,
+    WifiOff,
 } from "@mui/icons-material";
+import {
+    Box,
+    Chip,
+    Collapse,
+    IconButton,
+    Tooltip,
+    Typography,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
 
 const ConnectionStatus = () => {
   const [status, setStatus] = useState({
@@ -29,7 +29,7 @@ const ConnectionStatus = () => {
 
   const checkServerStatus = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/health", {
+      const response = await fetch("http://212.193.26.100:3001/api/health", {
         method: "GET",
         timeout: 5000,
       });
@@ -46,7 +46,7 @@ const ConnectionStatus = () => {
 
   const checkHLTVStatus = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/forze/matches", {
+      const response = await fetch("http://212.193.26.100:3001/api/forze/matches", {
         method: "GET",
         timeout: 10000,
       });
@@ -68,7 +68,7 @@ const ConnectionStatus = () => {
 
   const checkFaceitStatus = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/faceit/stats", {
+      const response = await fetch("http://212.193.26.100:3001/api/faceit/stats", {
         method: "GET",
         timeout: 10000,
       });

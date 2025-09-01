@@ -19,9 +19,9 @@ docker-compose up --build -d
 
 ### 2. Проверка работы
 Откройте браузер и перейдите по адресам:
-- **Фронтенд**: http://localhost
-- **Бэкенд API**: http://localhost:3001
-- **Redis**: localhost:6379
+- **Фронтенд**: http://212.193.26.100
+- **Бэкенд API**: http://212.193.26.100:3001
+- **Redis**: 212.193.26.100:6379
 
 ## 📊 Управление проектом
 
@@ -152,12 +152,12 @@ ForzeStats/
 ### Примеры запросов
 ```javascript
 // Получение списка игроков
-fetch('http://localhost:3001/api/players')
+fetch('http://212.193.26.100:3001/api/players')
   .then(response => response.json())
   .then(data => console.log(data));
 
 // Получение статистики
-fetch('http://localhost:3001/api/stats')
+fetch('http://212.193.26.100:3001/api/stats')
   .then(response => response.json())
   .then(data => console.log(data));
 ```

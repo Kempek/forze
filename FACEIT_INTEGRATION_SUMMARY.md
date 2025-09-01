@@ -49,13 +49,13 @@ POST /api/cache/clear           - Очистка кэша
 ### Тестирование
 ```bash
 # Проверка работы сервера
-curl http://localhost:3001/api/health
+curl http://212.193.26.100:3001/api/health
 
 # Получение данных FACEIT
-curl http://localhost:3001/api/faceit/combined
+curl http://212.193.26.100:3001/api/faceit/combined
 
 # Общая статистика
-curl http://localhost:3001/api/stats/overview
+curl http://212.193.26.100:3001/api/stats/overview
 ```
 
 ## 🔧 Технические детали

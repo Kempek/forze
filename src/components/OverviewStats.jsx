@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
 import {
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  Box,
-  Button,
-  Paper,
-  Divider,
-  CircularProgress,
-  Alert,
-} from "@mui/material";
-import {
-  EmojiEvents,
-  Refresh,
+    EmojiEvents,
+    Refresh,
 } from "@mui/icons-material";
+import {
+    Alert,
+    Box,
+    Button,
+    Card,
+    CardContent,
+    CircularProgress,
+    Container,
+    Divider,
+    Grid,
+    Paper,
+    Typography,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
 
 const OverviewStats = () => {
   const [overview, setOverview] = useState(null);
@@ -30,9 +30,9 @@ const OverviewStats = () => {
       setError(null);
 
       const [overviewRes, hltvRes, faceitRes] = await Promise.all([
-        fetch("http://localhost:3001/api/stats/overview"),
-        fetch("http://localhost:3001/api/forze/matches"),
-        fetch("http://localhost:3001/api/faceit/stats"),
+        fetch("http://212.193.26.100:3001/api/stats/overview"),
+        fetch("http://212.193.26.100:3001/api/forze/matches"),
+        fetch("http://212.193.26.100:3001/api/faceit/stats"),
       ]);
 
       const overviewData = await overviewRes.json();

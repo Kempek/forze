@@ -1,0 +1,35 @@
+# Облегченный Frontend Dockerfile для серверов с ограниченной памятью
+FROM node:18-alpine AS build
+
+WORKDIR /app
+
+# Устанавливаем переменные окружения для оптимизации памяти
+ENV NODE_OPTIONS="--max-old-space-size=2048"
+ENV NPM_CONFIG_CACHE=/tmp/.npm
+
+# Копируем package.json файлы
+COPY package*.json ./
+
+# Устанавливаем зависимости с оптимизацией
+RUN npm ci --no-audit --no-fund --prefer-offline --cache /tmp/.npm
+
+# Копируем исходный код фронтенда
+COPY . .
+
+# Собираем фронтенд с ограниченной памятью
+RUN npm run build
+
+# Production stage
+FROM nginx:alpine
+
+# Копируем собранные файлы
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Копируем конфигурацию nginx
+COPY nginx-frontend.conf /etc/nginx/nginx.conf
+
+# Открываем порт
+EXPOSE 3000
+
+# Запускаем nginx
+CMD ["nginx", "-g", "daemon off;"]

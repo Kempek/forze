@@ -9,8 +9,6 @@ services:
     container_name: forze-frontend
     ports:
       - "3000:3000"
-    depends_on:
-      - backend
     restart: unless-stopped
     networks:
       - forze-network

@@ -1,24 +1,21 @@
 // src/App.jsx
-import React, { useState, useEffect } from "react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
+import { Refresh, Settings } from "@mui/icons-material";
 import {
-  Box,
-  Button,
-  Container,
-  Typography,
-  Alert,
-  Snackbar,
-  IconButton,
+    Alert,
+    Box,
+    Button,
+    Container,
+    Snackbar,
+    Typography
 } from "@mui/material";
-import { Refresh, Settings, Info } from "@mui/icons-material";
-import WinLossLineChart from "./components/WinLossLineChart";
-import SimpleChart from "./components/SimpleChart";
-import MaterialChart from "./components/MaterialChart";
-import MatchTable from "./components/MatchTable";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import React, { useEffect, useState } from "react";
+import ErrorBoundary from "./components/ErrorBoundary";
 import FaceitStats from "./components/FaceitStats";
 import GooeyNav from "./components/GooeyNav";
-import ErrorBoundary from "./components/ErrorBoundary";
+import MatchTable from "./components/MatchTable";
+import MaterialChart from "./components/MaterialChart";
 import OverviewStats from "./components/OverviewStats";
 import PlayerStats from "./components/PlayerStats";
 
@@ -125,7 +122,7 @@ function App() {
       setError(null);
 
       // Загружаем только HLTV данные для основной вкладки
-      const response = await fetch("http://localhost:3001/api/forze/matches");
+      const response = await fetch("http://212.193.26.100:3001/api/forze/matches");
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -157,7 +154,7 @@ function App() {
 
   const clearCache = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/cache/clear", {
+      const response = await fetch("http://212.193.26.100:3001/api/cache/clear", {
         method: "POST",
       });
 

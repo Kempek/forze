@@ -1,38 +1,37 @@
-import React, { useState, useEffect } from "react";
 import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  Chip,
-  CircularProgress,
-  Alert,
-  Paper,
-  Button,
-  Avatar,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Tabs,
-  Tab,
-  IconButton,
-  Tooltip,
-} from "@mui/material";
-import {
-  Person,
-  Star,
-  TrendingUp,
-  Refresh,
-  EmojiEvents,
-  Timeline,
-  SportsEsports,
-  OpenInNew,
-  Launch,
+    EmojiEvents,
+    OpenInNew,
+    Person,
+    Refresh,
+    SportsEsports,
+    Star,
+    Timeline,
+    TrendingUp
 } from "@mui/icons-material";
+import {
+    Alert,
+    Avatar,
+    Box,
+    Button,
+    Card,
+    CardContent,
+    Chip,
+    CircularProgress,
+    Grid,
+    IconButton,
+    Paper,
+    Tab,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Tabs,
+    Tooltip,
+    Typography,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
 
 const PlayerStats = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -48,7 +47,7 @@ const PlayerStats = () => {
       setHltvLoading(true);
       setHltvError(null);
 
-      const response = await fetch("http://localhost:3001/api/forze/players");
+      const response = await fetch("http://212.193.26.100:3001/api/forze/players");
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
@@ -68,7 +67,7 @@ const PlayerStats = () => {
       setFaceitLoading(true);
       setFaceitError(null);
 
-      const response = await fetch("http://localhost:3001/api/faceit/players");
+      const response = await fetch("http://212.193.26.100:3001/api/faceit/players");
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }

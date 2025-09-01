@@ -11,7 +11,7 @@
 ### 1. **Обновлен метод получения данных:**
 ```javascript
 // БЫЛО:
-const matchesResp = await fetch('http://localhost:3001/api/faceit/matches');
+const matchesResp = await fetch('http://212.193.26.100:3001/api/faceit/matches');
 const matchesData = await matchesResp.json();
 const rawMatches = matchesData.matches || [];
 
@@ -23,8 +23,8 @@ const winRate = totalMatches > 0 ? Math.round((wins / totalMatches) * 100) : 0;
 
 // СТАЛО:
 const [statsResp, matchesResp] = await Promise.all([
-  fetch('http://localhost:3001/api/faceit/stats'),
-  fetch('http://localhost:3001/api/faceit/matches')
+  fetch('http://212.193.26.100:3001/api/faceit/stats'),
+  fetch('http://212.193.26.100:3001/api/faceit/matches')
 ]);
 
 const statsData = await statsResp.json();
