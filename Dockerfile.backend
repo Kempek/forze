@@ -1,0 +1,42 @@
+# Backend Dockerfile
+FROM node:18-alpine
+
+# Устанавливаем зависимости для Puppeteer
+RUN apk add --no-cache \
+    chromium \
+    nss \
+    freetype \
+    freetype-dev \
+    harfbuzz \
+    ca-certificates \
+    ttf-freefont
+
+# Устанавливаем переменные окружения для Puppeteer
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser \
+    NODE_ENV=production \
+    NODE_OPTIONS="--no-experimental-fetch"
+
+WORKDIR /app
+
+# Копируем package.json файлы
+COPY server/package*.json ./
+
+# Устанавливаем зависимости
+RUN npm ci --only=production
+
+# Копируем исходный код сервера
+COPY server/ ./
+
+# Создаем пользователя для безопасности
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S forze -u 1001
+
+# Переключаемся на пользователя
+USER forze
+
+# Открываем порт
+EXPOSE 3001
+
+# Запускаем сервер
+CMD ["node", "server.js"]

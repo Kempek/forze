@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  # Frontend контейнер
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: forze-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - forze-network
+
+  # Backend контейнер
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: forze-backend
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+      - PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+    restart: unless-stopped
+    networks:
+      - forze-network
+
+networks:
+  forze-network:
+    driver: bridge
